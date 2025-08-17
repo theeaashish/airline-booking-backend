@@ -1,11 +1,9 @@
 const { Router } = require("express");
 
+const { InfoController } = require("../../controllers");
+
 const router = Router();
 
-router.get("/info", (req, res) => {
-  return res.json({
-    msg: "ok",
-  });
-});
+router.get("/info", InfoController.info);
 
 module.exports = router;
