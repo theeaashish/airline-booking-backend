@@ -1,9 +1,14 @@
-const { Router } = require('express');
+const { Router } = require("express");
 
-const { AirplaneController } = require('../../controllers');
+const { AirplaneController } = require("../../controllers");
+const { AirplaneMiddlewares } = require("../../middlewares");
 const router = Router();
 
 // /api/v1/airplanes
-router.post('/', AirplaneController.createAirplane);
+router.post(
+  "/",
+  AirplaneMiddlewares.validateCreateRequest,
+  AirplaneController.createAirplane
+);
 
 module.exports = router;
