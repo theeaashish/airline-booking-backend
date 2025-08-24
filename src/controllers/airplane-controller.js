@@ -63,10 +63,8 @@ async function updateAirplane(req, res) {
       modelNumber: req.body.modelNumber,
       capacity: req.body.capacity,
     });
-    return res.status(StatusCodes.OK).json({
-      message: "Airplane updated successfully",
-      data: response,
-    });
+    SuccessResponse.data = response;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
